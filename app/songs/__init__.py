@@ -14,7 +14,6 @@ from werkzeug.utils import secure_filename, redirect
 songs = Blueprint('songs', __name__,
                   template_folder='templates')
 
-
 @songs.route('/songs', methods=['GET'], defaults={"page": 1})
 @songs.route('/songs/<int:page>', methods=['GET'])
 def songs_browse(page):

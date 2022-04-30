@@ -1,6 +1,5 @@
 import os
 
-
 class Config(object):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DEBUG = False
@@ -14,15 +13,12 @@ class Config(object):
     UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', BASE_DIR + '/uploads')
     LOG_DIR = os.path.join(BASE_DIR, './logs')
 
-
 class ProductionConfig(Config):
     pass
-
 
 class DevelopmentConfig(Config):
     DEBUG = True
     SESSION_COOKIE_SECURE = False
-
 
 class TestingConfig(Config):
     TESTING = True

@@ -27,18 +27,15 @@ def after_request_logging(response):
     return response
 
 
-@log_con.before_app_first_request
-def configure_logging():
+def setup_logs():
+
     # set the name of the apps log folder to logs
     logdir = config.Config.LOG_DIR
     # make a directory if it doesn't exist
     if not os.path.exists(logdir):
         os.mkdir(logdir)
     logging.config.dictConfig(LOGGING_CONFIG)
-    log = logging.getLogger("myApp")
-    log.info("My App Logger")
-    log = logging.getLogger("csvlog")
-    log.debug("CSV file upload Logger Message(first_request)")
+
 
 
 LOGGING_CONFIG = {
@@ -48,15 +45,7 @@ LOGGING_CONFIG = {
         'standard': {
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
         },
-        'RequestFormatter': {
-            '()': 'app.logging_config.log_formatters.RequestFormatter',
-            'format': '[%(asctime)s] [%(process)d] %(remote_addr)s requested %(url)s'
-                      '%(levelname)s in %(module)s: %(message)s'
-        },
-        'CSVFormatter': {
-            '()': 'app.logging_config.log_formatters.RequestFormatter',
-            'format': '%(filename)s uploaded by : %(host)s'
-        }
+
     },
     'handlers': {
         'default': {
@@ -65,39 +54,77 @@ LOGGING_CONFIG = {
             'class': 'logging.StreamHandler',
             'stream': 'ext://sys.stdout',  # Default is stderr
         },
-        'file.handler.myapp': {
+        'file.handler': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'formatter': 'RequestFormatter',
-            'filename': os.path.join(config.Config.LOG_DIR, 'myapp.log'),
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'handler.log'),
             'maxBytes': 10000000,
             'backupCount': 5,
         },
-        'file.handler.csvlog': {
+        'file.handler.myapp': {
             'class': 'logging.handlers.RotatingFileHandler',
-            'formatter': 'CSVFormatter',
-            'filename': os.path.join(config.Config.LOG_DIR, 'csvlog.log'),
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'myapp.log'),
+            'maxBytes': 10000000,
+            'backupCount': 5,
+        },
+        'file.handler.request': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'request.log'),
+            'maxBytes': 10000000,
+            'backupCount': 5,
+        },
+        'file.handler.errors': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'errors.log'),
+            'maxBytes': 10000000,
+            'backupCount': 5,
+        },
+        'file.handler.sqlalchemy': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'sqlalchemy.log'),
+            'maxBytes': 10000000,
+            'backupCount': 5,
+        },
+        'file.handler.werkzeug': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'standard',
+            'filename': os.path.join(config.Config.LOG_DIR,'werkzeug.log'),
             'maxBytes': 10000000,
             'backupCount': 5,
         },
     },
     'loggers': {
         '': {  # root logger
-            'handlers': ['default'],
+            'handlers': ['default','file.handler'],
             'level': 'DEBUG',
             'propagate': True
         },
         '__main__': {  # if __name__ == '__main__'
-            'handlers': ['default'],
+            'handlers': ['default','file.handler'],
             'level': 'DEBUG',
             'propagate': True
         },
-        'myApp': {  # if __name__ == '__main__'
-            'handlers': ['file.handler.myapp'],
+        'werkzeug': {  # if __name__ == '__main__'
+            'handlers': ['file.handler.werkzeug'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'sqlalchemy.engine': {  # if __name__ == '__main__'
+            'handlers': ['file.handler.sqlalchemy'],
             'level': 'INFO',
             'propagate': False
         },
-        'csvlog': {  # if __name__ == '__main__'
-            'handlers': ['file.handler.csvlog'],
+        'myApp': {  # if __name__ == '__main__'
+            'handlers': ['file.handler.myapp'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'myerrors': {  # if __name__ == '__main__'
+            'handlers': ['file.handler.errors'],
             'level': 'DEBUG',
             'propagate': False
         },

@@ -1,4 +1,4 @@
-setuptools
+setuptools==62.1.0
 wheel
 astroid==2.11.2
 attrs==21.4.0

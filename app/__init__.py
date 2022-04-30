@@ -18,20 +18,20 @@ from app.error_handlers import error_handlers
 from app.logging_config import log_con, LOGGING_CONFIG
 from app.simple_pages import simple_pages
 from app.songs import songs
+from app.map import map
 from app.db import database
 from flask_cors import CORS
-
 login_manager = flask_login.LoginManager()
 
 
 def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
-    if app.config["ENV"] == "production":
+    if  os.environ.get("FLASK_ENV") == "production":
         app.config.from_object("app.config.ProductionConfig")
-    elif app.config["ENV"] == "development":
+    elif os.environ.get("FLASK_ENV") == "development":
         app.config.from_object("app.config.DevelopmentConfig")
-    elif app.config["ENV"] == "testing":
+    elif os.environ.get("FLASK_ENV") == "testing":
         app.config.from_object("app.config.TestingConfig")
 
     # https://flask-login.readthedocs.io/en/latest/  <-login manager
@@ -42,7 +42,6 @@ def create_app():
     csrf = CSRFProtect(app)
     # https://bootstrap-flask.readthedocs.io/en/stable/
     bootstrap = Bootstrap5(app)
-
     # these load functions with web interface
     app.register_blueprint(simple_pages)
     app.register_blueprint(auth)
@@ -51,14 +50,13 @@ def create_app():
     app.register_blueprint(log_con)
     app.register_blueprint(error_handlers)
     app.register_blueprint(songs)
-    #app.register_blueprint(map)
+    app.register_blueprint(map)
     app.context_processor(utility_text_processors)
     # add command function to cli commands
     app.cli.add_command(create_database)
-    #app.cli.add_command(create_log_folder)
     db.init_app(app)
     api_v1_cors_config = {
-        "methods": ["OPTIONS", "GET", "POST"],
+    "methods": ["OPTIONS", "GET", "POST"],
     }
     CORS(app, resources={"/api/*": api_v1_cors_config})
     # Run once at startup:
