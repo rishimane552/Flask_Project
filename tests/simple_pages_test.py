@@ -19,28 +19,28 @@ def test_request_home(client):
     """This makes the index page"""
     response = client.get("/")
     assert response.status_code == 200
-    assert b"Git" in response.data
+    assert b"Web Development" in response.data
 
 
 def test_pylint_page(client):
     """This makes the pylint page"""
     response = client.get("/pylint")
     assert response.status_code == 200
-    assert b"Pylint" in response.data
+    assert b"Object" in response.data
 
 
 def test_aaa_page(client):
     """This makes the AAA page"""
     response = client.get("/aaa")
     assert response.status_code == 200
-    assert b"AAA" in response.data
+    assert b"Testing" in response.data
 
 
 def test_oops_page(client):
     """This makes the OOPs page"""
     response = client.get("/oops")
     assert response.status_code == 200
-    assert b"OOPs" in response.data
+    assert b"Object" in response.data
 
 
 def test_solid_page(client):
