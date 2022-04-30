@@ -82,7 +82,7 @@ def test_about_page(client):
     """This makes the ci/cd page"""
     response = client.get("/about")
     assert response.status_code == 200
-    assert b"Introduction about My Self" in response.data
+    assert b"intern" in response.data
 
 
 def test_register_page(client):
