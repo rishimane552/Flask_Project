@@ -19,11 +19,6 @@ def after_request_logging(response):
         return response
     elif request.path.startswith('/bootstrap'):
         return response
-    logging.config.dictConfig(LOGGING_CONFIG)
-    log = logging.getLogger("myApp")
-    log.info("My App Logger")
-    log = logging.getLogger("csvlog")
-    log.debug("CSV file upload Logger Message(first_request)")
     return response
 
 
