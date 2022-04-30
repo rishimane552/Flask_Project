@@ -1,6 +1,25 @@
 {% extends "base.html" %}
-<article>{% block content %}
-    <h1>About</h1>
-    {{ lipsum (n=5, html=True, min=20, max=100) }}
+
+{% block content %}
+
+<div class="row">
+        <div class="col">
+             <h3><p>Brief Introduction about Myself</p></h3>
+
+        <p style="font-size: large">First of all, welcome to my website. My name is Rishikesh Mane. I am currently pursuing
+            my masters in Data Science at NJIT and have completed my bachelors in computer engineering at NJIT as well. I am currently
+            doing and internship at Algonox Technologies as Software Engineer. As an intern, i am working under a Senior Data Scientist.
+            and Solutions Architect, to develop an AI-Driven use case for the company
+            So far, I've created
+            projects using the Django Framework, but this time I got the opportunity to learn the Flask Framework for
+            this project and also got more ideas about Pylint, AAA Testing, OOPS Concepts, and SOLID principles.</p>
+        <p style="font-size: large">
+            This class gives a better understanding of Web Development,and also the basic sotware Development.
+            We got the develop a web application using the flask framework and also learned about different topics from python
+            Pylint, AAA Testing, OOPS Concepts, and SOLID principles  </p>
+        </div>
+    <div class="col-3"></div>
+    </div>
+    <!-- content row end-->
+
 {% endblock %}
-</article>

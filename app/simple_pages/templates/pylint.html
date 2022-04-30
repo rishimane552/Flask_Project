@@ -1,0 +1,298 @@
+{% extends "base.html" %}
+{% block navbaritems %}
+    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Technology Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/git">Git</a>
+            <a class="dropdown-item" href="/docker">Docker</a>
+            <a class="dropdown-item" href="flask">Python/ Flask</a>
+            <a class="dropdown-item" href="cicd">CI/ CD</a>
+            <a class="dropdown-item active" href="/pylint">Pylint & General definitions</a>
+            <a class="dropdown-item" href="/aaa">AAA Testing</a>
+            <a class="dropdown-item" href="/oops">OOPs</a>
+            <a class="dropdown-item" href="/solid">SOLID</a>
+        </div>
+    </ul>
+
+    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
+    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
+    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
+    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
+
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+        <!-- col 1 -->
+        <h1 class="font-monospace">Object Oriented Programming Glossary</h1><br>
+        <div class="col-8">
+            <h4><b><i>What is Object Oriented Programming</i></b></h4><br>
+            <p>
+                Object Oriented programming (OOP) is a programming paradigm that relies on
+                the concept of classes and objects. It is used to structure a software program
+                into simple, reusable pieces of code blueprints (usually called classes), which
+                are used to create individual instances of objects. There are many object-oriented
+                programming languages including JavaScript, C++, Java, and Python.
+
+            </p>
+            <h4><b><i>What is Pylint?</i></b></h4><br>
+            <p>
+                Pylint is defined as Python Static code analysis tool for analysis purpose. It can scan for programming
+                errors, implement best practises in coding standards, identify code violations and provide refactoring
+                suggestions.</p><p>
+
+                It is fully user customizable and has integral special functions to control individual errors and alerts
+                within the user’s code. It gives user flexibility to write their own custom plugin and executable from
+            an extensive configuration file.</p><p>
+
+                Pylint will display number of messages as it does code analysis and code are given an overall mark based
+            on number and severity of warnings and errors.</p><p>
+
+                Pylint was developed in 2003 at Logilab, which funded Sylvain Thénault to lead its development and till
+                2015 project went under Python Code Quality Authority (PyCQA) umbrella.
+            </p>
+            <h4><b> Glossary </b></h4>
+            <ul>
+                <li>
+                    <b><i> Instantiation </i> </b>
+                    <p> Instantiation refers to creating an object/instance for a class.
+                        In object-oriented programming, an object is an instance of a class.
+                        Think of the common example that is the Employee class; any new employee
+                        object used in the program is considered an instance of that class. Therefore,
+                        the fancy term for creating a new instance of that class is instantiation.
+                    </p>
+
+                </li>
+                <li>
+                    <b><i> Object </i> </b>
+                    <p>
+                        Object is an instance of a class. An object in OOPS is nothing but a self-contained
+                        component which consists of methods and properties to make a particular type of data useful.
+                        For example color name, table, bag, barking. When you send a message to an object,
+                        you are asking the object to invoke or execute one of its methods as defined in the class.
+                        From a programming point of view, an object in OOPS can include a data structure, a variable,
+                        or a function. It has a memory location allocated.
+                    </p>
+                </li>
+                <li>
+                    <b><i>Class</i> </b>
+                    <p>
+                        Class are a blueprint or a set of instructions to build a specific type of object.
+                        It is a basic concept of Object-Oriented Programming which revolve around the real-life
+                        entities.
+                        Class in Java determines how an object will behave and what the object will contain.
+                    </p>
+                </li>
+                <li>
+                    <b><i>Namespace</i></b>
+                    <p>
+                        A namespace is a declarative region that provides a scope to the identifiers (the names of
+                        types,
+                        functions, variables, etc) inside it. Namespaces are used to organize code into logical groups
+                        and
+                        to prevent name collisions that can occur especially when your code base includes multiple
+                        libraries.
+                        All identifiers at namespace scope are visible to one another without qualification. Identifiers
+                        outside the namespace can access the members by using the fully qualified name for each
+                        identifier
+                    </p>
+                </li>
+                <li>
+                    <b><i>Constructor</i> </b>
+                    <p>
+                        A constructor is a special method of a class or structure in object-oriented programming that
+                        initializes a newly created object of that type. Whenever an object is created, the constructor
+                        is called automatically. A constructor is like an instance method that usually has the same name
+                        as the class, and can be used to set the values of the members of an object,
+                        either to default or to user-defined values. However, although it resembles it,
+                        a constructor is not a proper method since it doesn’t have a return type. Instead
+                        of performing a task by executing code, the constructor initializes the object, and it cannot be
+                        static, final, abstract, and synchronized.
+                    </p>
+                </li>
+                <li>
+                    <b><i> Fixture </i> </b>
+                    <p>
+                        Test fixture refers to the fixed state used as a baseline for running tests in software testing.
+                        The purpose of a test fixture is to ensure that there is a well known and fixed environment in
+                        which
+                        tests are run so that results are repeatable. Some people call this the test context.
+
+                        Examples of fixtures:
+
+                    <ul>
+                        <li>Loading a database with a specific, known set of data</li>
+                    </ul>
+                    <ul>
+                        <li>Erasing a hard disk and installing a known clean operating system installation</li>
+                    </ul>
+                    <ul>
+                        <li>Copying a specific known set of files</li>
+                    </ul>
+                    <ul>
+                        <li>Preparation of input data and set-up/creation of fake or mock objects...</li>
+                    </ul>
+
+                    </p>
+                </li>
+                <li>
+                    <b><i>Type Hint</i> </b>
+                    <p>
+                        With Type hinting we can specify the expected data type (arrays, objects, interface, etc.) for
+                        an argument in a function
+                        declaration. This practice can be most advantageous because it results in better code
+                        organization
+                        and improved error messages.
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Type Cast</i> </b>
+                    <p>
+                        Type Casting is a mechanism which enables a variable of one datatype to be converted to another
+                        datatype.
+                        When a variable is typecast into a different type, the compiler basically treats the variable as
+                        of the new
+                        data type.
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Unit Test</i> </b>
+                    <p>
+                        A unit test is a way of testing a unit - the smallest piece of code that can be logically
+                        isolated
+                        in a system. In most programming languages, that is a function, a subroutine, a method or
+                        property.
+                        The isolated part of the definition is important. In his book "Working Effectively with Legacy
+                        Code",
+                        author Michael Feathers states that such tests are not unit tests when they rely on external
+                        systems:
+                        “If it talks to the database, it talks across the network, it touches the file system, it
+                        requires
+                        system configuration, or it can't be run at the same time as any other test."
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Static</i> </b>
+                    <p>
+                        We can define class members static using static keyword. When we declare a member of a class as
+                        static it means no matter how many objects of the class are created, there is only one copy of
+                        the
+                        static member.
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Instance Method</i> </b>
+                    <p>
+                        Used to access or modify the object state. If we use instance variables inside a method,
+                        such methods are called instance methods. It must have a self parameter to refer to the current
+                        object.
+                    </p>
+                </li>
+                <li>
+                    <b> Instance Property </b>
+                </li>
+                <li>
+                    <b> <i>Static Method</i> </b>
+                    <p>
+                        a static method is a method that belongs to a class rather than an instance of a class. The
+                        method
+                        is accessible to every instance of a class, but methods defined in an instance are only able to
+                        be
+                        accessed by that object of a class.
+                        A static method is not part of the objects it creates but is part of a class definition. Unlike
+                        instance methods, a static method is referenced by the class name and can be invoked without
+                        creating
+                        an object of class. In simpler terms, they are methods that exist even if no object has been
+                        constructed
+                        yet and that do not require an invocation object.
+                    </p>
+                </li>
+                <li>
+                    <b> Static Property </b>
+                </li>
+                <li>
+                    <b> <i>Encapsulation</i> </b>
+                    <p>
+                        In object-oriented computer programming (OOP) languages, the notion of encapsulation (or OOP
+                        Encapsulation)
+                        refers to the bundling of data, along with the methods that operate on that data, into a single
+                        unit.
+                        Many programming languages use encapsulation frequently in the form of classes.
+                    </p>
+                    <p>
+                        Encapsulation may also refer to a mechanism of restricting the direct access to some components
+                        of an object,
+                        such that users cannot access state values for all of the variables of a particular object.
+                        Encapsulation
+                        can be used to hide both data members and data functions or methods associated with an
+                        instantiated class
+                        or object.
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Inheritance</i> </b>
+                    <p>
+                        Inheritance is the procedure in which one class inherits the attributes and methods of another
+                        class.
+                        The class whose properties and methods are inherited is known as the Parent class. And the class
+                        that
+                        inherits the properties from the parent class is the Child class.
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Polymorphism</i> </b>
+                    <p>
+                        Polymorphism is an object-oriented programming concept that refers to the ability of a variable,
+                        function, or object to take on multiple forms. In a programming language exhibiting
+                        polymorphism,
+                        class objects belonging to the same hierarchical tree (inherited from a common parent class) may
+                        have functions with the same name, but with different behaviors.
+                    </p>
+                </li>
+                <li>
+                    <b> <i>Abstraction</i> </b>
+                    <p>
+                        Abstraction is the concept of object-oriented programming that “shows” only essential attributes
+                        and “hides” unnecessary information. The main purpose of abstraction is hiding the unnecessary
+                        details from the users. Abstraction is selecting data from a larger pool to show only relevant
+                        details of the object to the user. It helps in reducing programming complexity and efforts. It
+                        is one of the most important concepts of OOPs.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <div class="row mb-3">
+                <li><a href="https://github.com/rishimane552">GitHub Repo: Rishikesh Mane</a></li>
+            </div>
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/gloss.png') }}" class="img-fluid" alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/gloss1.jpeg') }}" class="img-fluid" alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/gloss2.jpg') }}" class="img-fluid d-block"
+                     alt="Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+{% endblock %}

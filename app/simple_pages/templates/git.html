@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block navbaritems %}
+    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Technology Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item active" href="/git">Git</a>
+            <a class="dropdown-item" href="/docker">Docker</a>
+            <a class="dropdown-item" href="flask">Python/ Flask</a>
+            <a class="dropdown-item" href="cicd">CI/ CD</a>
+            <a class="dropdown-item" href="/pylint">Pylint & General definitions</a>
+            <a class="dropdown-item " href="/aaa">AAA Testing</a>
+            <a class="dropdown-item" href="/oops">OOPs</a>
+            <a class="dropdown-item" href="/solid">SOLID</a>
+        </div>
+    </ul>
+
+    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
+    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
+    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
+    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
+
+    </div>
+{% endblock %}
+{% block content %}
+<div class="row">
+        <!-- col 1 -->
+        <h1>GIT</h1>
+        <div class="col-8">
+            <p>Git is a source code management technology used by DevOps. It is a free and open-source version control system
+                that may be used to efficiently manage small to large projects. Git is a version control system that allows
+                numerous developers to collaborate on non-linear development projects. Git was invented by Linus Torvalds
+                in 2005 for the development of the Linux kernel.
+            </p>
+            <p>
+                Git is a version control system used for tracking changes in computer files. It is generally used for source
+                code management in software development.
+                 <ul>
+                    <li>Git is used to tracking changes in the source code</li>
+                    <li>The distributed version control tool is used for source code management</li>
+                    <li>It allows multiple developers to work together</li>
+                    <li>It supports non-linear development through its thousands of parallel branches</li>
+                 </ul>
+            </p>
+            <h4>GIT Branch</h4>
+            <p> In Git, a branch is used to store changes until they are ready. While the main branch (master) stays stable,
+            you can work on a branch. You can integrate it with the main branch once you've finished your work.
+            </p>
+            <p>In Git, a branch is analogous to a tree branch. A tree branch is connected to the trunk, which is the center
+                section of the tree. While branches can grow and fall off, the trunk remains compact and is the only portion
+                of the tree that can be said to be alive and well. Similarly, a Git branch allows you to continue creating and
+                coding a new feature or software modification without affecting the rest of the project. Branches can also be
+                thought of as a new line of development in a project. The master branch is Git's default or primary branch
+                (similar to a trunk of the tree).
+            </p>
+            <p>Git branches come in handy in a variety of situations during the course of a project's development. Branching,
+                as previously stated, creates a new line of development that is distinct from or isolated from the primary
+                stable master branch. There are numerous benefits to doing so. Assume you're working on a project with your
+                team and you've completed a feature. You contact the customer to suggest that they look at the feature, but
+                they are too busy to do so, so you provide them a link to the project.
+            </p>
+             <dl>
+                <dt><code>$ git branch < new-branch > </code></dt>
+                <dd>- This is the first step in the process,
+                    you can start on a default branch or create a new branch for the development.</dd>
+                 <dt><code>$ git merge < branch name ></code></dt>
+                <dd>- An already running branch can merge with any other branch in your Git repository. Merging a branch can help
+                    when you are done with the branch and want the code to integrate into another branch code.</dd>
+                 <dt><code>$ git push origin --delete remoteBranchName</code></dt>
+                <dd>- An already running branch can delete from your Git repository. Deleting a branch can help when the branch has
+                    done its job, i.e., it's already merged, or you no longer need it in your repository for any reason.</dd>
+                 <dt><code>$ git checkout -b ＜new-branch＞ </code></dt>
+                <dd>- An already running branch can pull or checkout to make a clone of the branch so that the user can work on any of them.
+                    Pulling a branch can help when you don't want to disturb the older branch and experiment on the new one.</dd>
+             </dl>
+             <h4>GIT Merge</h4><code>$ git merge < branch name ></code>
+             <p>For developers that use version control systems, merging is a standard practice. Merging commits changes to another location,
+                 whether they were produced for testing, bug corrections, or other reasons. Merging takes the contents of a source branch and
+                 merges them with the contents of a target branch. Only the target branch is altered in this operation. The source branch's
+                 history is unchanged.
+             </p>
+             <h4>GIT Commit</h4><code>$ git commit -m "First Commit!"</code>
+             <p>A Git project timeline is made up of commits, which are the basic building blocks. Commits are snapshots or milestones in a
+                 Git project's timeline. The git commit command is used to make commits, which represent the current state of a project.
+                 Always commit Git Snapshots to the local repository. You are not obligated to communicate with the central repository until
+                 you are ready. Each developer's local repository serves as a buffer between their contributions and the central repository,
+                 just as the staging area does between the working directory and the project history. For Git users, this means a shift in
+                 their development model. Git developers have the option of making a change and directly committing it to the central repo,
+                 Git developers have the opportunity to accumulate commits in their local repo.
+             </p>
+             <h4> Tags </h4> <code>$ git tag < tagname ></code>
+             <p>
+                 This document will discuss the Git concept of tagging and the git tag command. Tags are ref's that point to specific points
+                 in Git history. Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.1).
+                 A tag is like a branch that doesn’t change. Unlike branches, tags, after being created, have no further history of commits.
+                 For more info on branches visit the git branch page. This document will cover the different kind of tags, how to create tags,
+                 listing all tags, deleting tags, sharing tags, and more.
+             </p>
+             <h4> GIT Repository </h4> <code>$ git add .</code>
+            <li><a href="https://github.com/rishimane552" >GitHub Repo: Rishikesh Mane</a></li>
+             <p> Repositories in GIT contain a collection of files of various different versions of a Project. These files are imported from
+                 the repository into the local server of the user for further updations and modifications in the content of the file.
+                 A VCS or the Version Control System is used to create these versions and store them in a specific place termed as a repository.
+                 The process of copying the content from an existing Git Repository with the help of various Git Tools is termed as cloning.
+                 Once the cloning process is done, the user gets the complete repository on his local machine. Git by default assumes the work
+                 to be done on the repository is as a user, once the cloning is done.
+             </p>
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <div class="row mb-3"><li><a href="https://github.com/rishimane552" >GitHub Repo: Rishikesh Mane</a></li>
+                </div>
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/git_branch.png') }}" class="img-fluid" alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/git_merge.png') }}" class="img-fluid" alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/git_repo.png') }}" class="img-fluid" alt="Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+{% endblock %}

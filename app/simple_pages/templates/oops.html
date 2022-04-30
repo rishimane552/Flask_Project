@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% block navbaritems %}
+    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Technology Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/git">Git</a>
+            <a class="dropdown-item" href="/docker">Docker</a>
+            <a class="dropdown-item" href="flask">Python/ Flask</a>
+            <a class="dropdown-item" href="cicd">CI/ CD</a>
+            <a class="dropdown-item" href="/pylint">Pylint & General definitions</a>
+            <a class="dropdown-item" href="/aaa">AAA Testing</a>
+            <a class="dropdown-item active" href="/oops">OOPs</a>
+            <a class="dropdown-item" href="/solid">SOLID</a>
+        </div>
+    </ul>
+
+    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
+    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
+    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
+    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
+
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+        <!-- col 1 -->
+        <h1 class="font-monospace">Object Oriented Programming Principle Concepts </h1><br>
+        <div class="col-8">
+            <h4><b><i>Encapsulation</i></b></h4><br>
+            <p>
+                <b><i> Encapsulation </i></b> in Python describes the concept of bundling data and methods within a
+                single unit. So,
+                for example, when you create a class, it means you are implementing encapsulation. A class is an example
+                of encapsulation as it binds all the data members (instance variables) and methods into a single unit.
+            </p>
+            <pre class="border-top border-bottom" style="height: 300px"><code>from calculator.calculations import Addition, Subtraction, Multiplication, Division
+
+
+class Calculator:
+    """ This is the default result property"""
+
+    @staticmethod
+    def multiply(tuple_list):
+        """ This is the multiply method"""
+        calculation = Multiplication.create(tuple_list)
+        return calculation.get_result()
+            </code></pre>
+            <p>
+                In this example, we create an Calculator class by defining multiply attribute such as tuple list
+                an instance variable. it will bind and store all the data and functionally to the calculation variable
+                to perform get_result() method.
+            </p>
+            <h4><b><i>Inheritance</i></b></h4><br>
+            <p>
+                <b><i> Inheritance </i></b> in Python describes the concept of bundling data and methods within a single
+                unit. So,
+                for example, when you create a class, it means you are implementing encapsulation. A class is an example
+                of encapsulation as it binds all the data members (instance variables) and methods into a single unit.
+            </p>
+            <pre class="border-top border-bottom" style="height: 300px"><code>class Calculation:
+            """ calculation abstract base class"""
+
+            # pylint: disable=too-few-public-methods
+            def __init__(self, tuple_list: tuple):
+                """ constructor method"""
+                self.values = Calculation.convert_args_to_tuple_of_float(tuple_list)
+
+            @classmethod
+            def create(cls, tuple_list: tuple):
+                """ factory method"""
+                return cls(tuple_list)
+
+            @staticmethod
+            def convert_args_to_tuple_of_float(tuple_list):
+                """ standardize values to list of floats"""
+                list_values_float = []
+                for item in tuple_list:
+                    list_values_float.append(float(item))
+                return tuple(list_values_float)
+
+
+class Addition(Calculation):
+            """ calculation addition class"""
+
+            def get_result(self):
+                """get the addition results"""
+                sum_of_values = 0.0
+                for value in self.values:
+                    sum_of_values = Add.add(value, sum_of_values)
+                return sum_of_values
+
+            </code>
+
+            </pre>
+            <p>
+                In this example, we have Addition class inherited from the calculation class. the child class which is
+                the addition class will have access to all the methods and variables from the parent class which is the
+
+                Calculation class. sum_of_values = Add.add(value, sum_of_values) in this code we are using add function
+                from the parent class which was created in Calculation
+
+                Calculation class. sum_of_values = Add.add(value, sum_of_values) in this code we are using add function from the parent class which was created in Calculation
+
+            </p>
+            <h4><b><i>Polymorphism</i></b></h4><br>
+            <p>
+                The word polymorphism means having many forms. In programming, polymorphism means the same function name
+                (but different signatures) being used for different types.
+            </p>
+            <p>
+                In Python, Polymorphism lets us define methods in the child class that have the same name as the methods
+                in the parent class. In inheritance, the child class inherits the methods from the parent class.
+                However,
+                it is possible to modify a method in a child class that it has inherited from the parent class. This is
+                particularly useful in cases where the method inherited from the parent class doesn’t quite fit the
+                child class. In such cases, we re-implement the method in the child class. This process of
+
+                re-implementing a method in the child class is known as Method Overriding. For example, in the below
+                code we are using the
+                get_result() in two different classes and they both do two different things, first one is for addition
+                and the second one is for
+                Multiplication.
+            </p>
+
+            <pre class="border-top border-bottom" style="height: 300px"><code>
+
+
+            class Addition(Calculation):
+    """ calculation addition class"""
+
+    def get_result(self):
+        """get the addition results"""
+        sum_of_values = 0.0
+        for value in self.values:
+            sum_of_values = Add.add(value, sum_of_values)
+        return sum_of_values
+
+
+class Multiplication(Calculation):
+    """multiplication calculation object"""
+
+    def get_result(self):
+        """get the multiplication results"""
+        result = 1.0
+        for value in self.values:
+            result = Mult.multiply(result, value)
+        return result
+            </code></pre>
+
+            <h4><b><i>Abstraction</i></b></h4><br>
+
+            <p>
+                Abstraction in python is defined as a process of handling complexity by hiding unnecessary information
+                from the user. This is one of the core concepts of object-oriented programming (OOP) languages. That
+                enables the user to implement even more complex logic on top of the provided abstraction without
+                understanding or even thinking about all the hidden background/back-end complexity.
+
+                That’s a very generic core topic not only limited to object-oriented programming. You can observe it
+                everywhere in the real world or in our surroundings.
+            </p>
+            <p>
+                A class that consists of one or more abstract method is called the abstract class. Abstract methods do
+                not contain their implementation. Abstract class can be inherited by the subclass and abstract method
+                gets its definition in the subclass. Abstraction classes are meant to be the blueprint of the other
+                class. An abstract class can be useful when we are designing large functions.
+            </p>
+            <p>
+                In the below code, we are using all the operations, but we are getting all the calculations we will be
+                performing from the calculations class
+                and we are just importing it. So we are just hiding the calculations we are performing.
+            </p>
+
+            <pre class="border-top border-bottom" style="height: 300px"><code>
+            from calculator.calculations import Addition, Subtraction, Multiplication, Division
+
+
+class Calculator:
+    """ This is the default result property"""
+
+    @staticmethod
+    def add(tuple_list):
+        """ This is the add method"""
+        # Call the static method add to return the sum and set it to the calculator result property
+        calculation = Addition.create(tuple_list)
+        return calculation.get_result()
+
+    @staticmethod
+    def subtract(tuple_list):
+        """ This is the subtract method"""
+        calculation = Subtraction.create(tuple_list)
+        return calculation.get_result()
+
+    @staticmethod
+    def multiply(tuple_list):
+        """ This is the subtract method"""
+        calculation = Multiplication.create(tuple_list)
+        return calculation.get_result()
+
+    @staticmethod
+    def divide(tuple_list):
+        """ This is the subtract method"""
+        calculation = Division.create(tuple_list)
+        return calculation.get_result()
+
+</code></pre>
+
+                re-implementing
+                a method in the child class is known as Method Overriding.
+            </p>
+
+
+
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <div class="row mb-3">
+                <li><a href="https://github.com/rishimane552">GitHub Repo: Rishikesh Mane</a></li>
+            </div>
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+
+                <img src="{{ url_for('static', filename='images/oops.png') }}" class="img-fluid d-block mx-auto" alt="Image 1">
+
+
+
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+
+                <img src="{{ url_for('static', filename='images/encap.png') }}" class="img-fluid" alt="Image 2">
+
+
+
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+
+                <img src="{{ url_for('static', filename='images/inher.png') }}" class="img-fluid" alt="Image 3">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/poly.png') }}" class="img-fluid" alt="Image 3">
+            </div>
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/abs.png') }}" class="img-fluid" alt="Image 3">
+
+
+
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+{% endblock %}

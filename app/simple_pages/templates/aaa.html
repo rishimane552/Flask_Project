@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+        <!-- col 1 -->
+        <h1 class="font-monospace">AAA Testing</h1><br>
+        <div class="col-8">
+            <h4><b><i>What is Testing</i></b></h4><br>
+            <p>
+                A test is a procedure that exercises a behavior to determine if the behavior functions correctly.
+                There are several different kinds of tests, like unit tests, integration tests, or end-to-end tests,
+                but all functional tests do the same basic thing: they try something and report PASS or FAIL.
+                Testing provides an empirical feedback loop for development. That’s how testing keeps us safe. With
+                tests,
+                we know when things break. Without tests, coding can be dangerous. We don’t want to deploy big ol’ bugs!
+                So, if we intend to spend time writing tests, how can we write good tests? There’s a simple but powerful
+                pattern I like to follow: <b><i> Arrange-Act-Assert </i></b>.
+
+            </p>
+            <h4><b> AAA Testing </b></h4>
+            <ul>
+                <li><b><i> Arrange </i></b>
+                    <p>
+                        Arrange inputs and targets. Arrange steps should set up the test case. Does the test require any
+                        objects or special settings? Does it need to prep a database? Does it need to log into a web
+                        app?
+                        Handle all of these operations at the start of the test. You bring the system under test to a
+                        desired
+                        state and configure the dependencies: either instantiate them directly or prepare their test
+                        doubles.
+                    </p>
+                </li>
+                <li><b><i> Act </i></b>
+                    <p>
+                        Act on the target behavior. Act steps should cover the main thing to be tested. This could be
+                        calling a function or method, calling a REST API, or interacting with a web page. Keep actions
+                        focused on the target behavior.
+                    </p>
+
+                </li>
+                <li><b><i> Assert </i></b>
+                    <p>
+                        Assert expected outcomes. Act steps should elicit some sort of response. Assert steps verify the
+                        goodness or badness of that response. Sometimes, assertions are as simple as checking numeric or
+                        string values. Other times, they may require checking multiple facets of a system. Assertions
+                        will ultimately determine if the test passes or fails.
+                    </p>
+                </li>
+                <li>
+                    The code below is a snippet from our calculator project:
+                    <p>
+                    <pre><code>def test_calculation_multiply_get_result_method():
+                                        """Testing the Calculator Multiply"""
+                                        tuple_list = (1, 2)
+                                        calculation = Multiplication.create(tuple_list)
+                                        assert calculation.get_result() == 2</code></pre>
+                    </p>
+                    <ul>
+                        <li>
+                            The Arrange step creates a variable named “tuple_list” for testing.
+                        </li>
+                        <li>
+                            The Act step calls the “Multiplication.create” function using the “tuple_list” variable and
+                            stores the returned
+                            value in a variable named “calculation.”
+                        </li>
+                        <li>
+                            The Assert step verifies that “calculation.get_result()” is the value 2.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    The code below is from simple pages test:
+                    <p>
+                    <pre><code>def test_request_page1(client):
+                    """This makes the page1 page"""
+                    response = client.get("/page1")
+                    assert response.status_code == 200
+                    assert b"Git" in response.data
+                        </code></pre>
+                    </p>
+                    <ul>
+                        <li>
+                            The Arrange step creates a variable named “tuple_list” for testing.
+                        </li>
+                        <li>
+                            The Act step calls the “Multiplication.create” function using the “tuple_list” variable and
+                            stores the returned
+                            value in a variable named “calculation.”
+                        </li>
+                        <li>
+                            The Assert step verifies that “calculation.get_result()” is the value 2.
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <h4><b> Why Testing is Important </b></h4>
+            <ol>
+                <li type="1"><p><b>Increase the quality</b></p>
+                <p>
+                Testing and quality go hand in hand. Quality can be measured by the number of defects identified during
+                testing and those will then be fixed within a software development lifecycle. This will continue
+                throughout the development phase, and by testing continuously, it enables the quality of the software to
+                be improved.
+                </p><p>
+                Testing enables you to see what the software does and how well it does it so that the business can
+                measure the quality of the software before it goes live.</p>
+                </li>
+                <li type="2"><p><b>We all make mistakes</b></p>
+
+                <p>
+                There is no such thing as a defect-free system, and we all make mistakes especially developing a system
+                that is complex. Developing software without testing is just a guessing game. When code is written and a
+                set or piece of functionality is developed, it is important to test and verify that the system works as
+                    expected according to requirements.</p></li>
+
+                <li type="3"><p><b>Reduce risks</b></p>
+
+                <p>
+                Defects must be sought out and either fixed or removed from the final product to ensure that the system
+                can run as expected during live operation. When a critical defect is discovered in a live environment
+                the impact and severity are both high because it affects the end user, so continuous testing is very
+                important in order to mitigate the risks and ensure that the software is ready for live operation.
+                </p></li>
+                <li type="4"><p><b>Cost Effective</b></p><p>
+                Nobody wants a project to overrun, but it often feels as though the budget will run out sooner than
+                anticipated, or that the expenses are higher towards the end of the project.
+
+                Why is project go-live being pushed? Why is a lot of money being spent in fixing system issues?
+
+                Project delay does not happen only because of poor software quality, although it is one of the more
+                common reasons why a project go-live date is pushed back when working with system development or on
+                implementation. It is often more time consuming and difficult to fix a defect, hence more expensive,
+                when a defect is discovered at a later stage and a large amount of the system has already been built.
+
+                Testing early and continuously not only enables the system to be better, but it also allows the project
+                manager to have better control over the budget (time and money). Discovering defects and fixing them at
+                an earlier stage can reduce unexpected costs at the end of the project, or in a worst case scenario,
+                after the system is in live operation. </p>
+
+                <li type="5"><p><b>Gain customer confidence</b></p><p>
+
+
+                Last but by no means least, all the above leads to a happy customer! System stability is what we all
+                want as customers. Testing throughout the development lifecycle provides visibility as to how well and
+                stable the software has been developed, therefore increasing confidence in the customer once released
+                into a live environment.</p></li>
+            </ol>
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <div class="row mb-3">
+                <li><a href="https://github.com/rishimane552">GitHub Repo: Rishikesh Mane</a></li>
+            </div>
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/a.png') }}" class="img-fluid" alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/py1.png') }}" class="img-fluid" alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+
+                <img src="{{ url_for('static', filename='images/a1.png') }}" class="img-fluid" alt="Image 3">
+
+
+
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+    <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+{% endblock %}

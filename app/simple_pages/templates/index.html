@@ -1,25 +1,159 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <div class="row">
-        <article class="col-8 lh-lg fs-5">
+    <div class="row border border-primary span6 carouselsizeset">
+        <!-- carousel start -->
+        <div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
 
-            <h1>Index Page</h1>
-            {{ lipsum (n=5, html=True, min=20, max=100) }}
-        </article>
-        {% if current_user.is_authenticated == false %}
-            <aside class="col-4">
-                <h2>Login</h2>
-                <form action="{{ url_for('auth.login') }}" method=post>
-                    <dl>
-                        {{ form.csrf_token }}
-                        {{ render_field(form.email) }}
-                        {{ render_field(form.password) }}
-                    </dl>
-                    <p><input type=submit value=Login>
-                </form>
-            </aside>
-        {% endif %}
+                    <a href="/page1"><img src="{{ url_for('static', filename='images/git_index.png') }}"  class=" img-fluid d-block mx-auto" alt="git"></a>
 
+
+                </div>
+                <div class="carousel-item ">
+                    <a href="/page2"><img src="{{ url_for('static', filename='images/docker_index.png') }}" class="img-fluid d-block mx-auto" alt="docker"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/page3"><img src="{{ url_for('static', filename='images/py_index.png') }}" class="img-fluid d-block mx-auto" alt="flask"></a>
+                </div>
+                <div class="carousel-item">
+                    <a href="/page4"><img src="{{ url_for('static', filename='images/cicd.png') }}" class="img-fluid d-block mx-auto" alt="cicd"></a>
+                </div>
+
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Git</h5>
+
+                    <p class="card-text">Git is a version control system used for tracking changes in computer
+                        files.Click on the link below to read more.</p>
+                    <a href="/git" class="card-link">Git Overview</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Docker</h5>
+
+                    <p class="card-text">Docker is an open platform for developing, shipping, and running applications.Click on the link below to read more.</p>
+                    <a href="/docker" class="card-link">Docker</a>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Python/Flask</h5>
+
+                    <p class="card-text">This has details of Project Directory, and briefly talks about Pytest</p>
+                    <a href="/flask" class="card-link">Python/Flask</a>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+
+                    <h5 class="card-title">CI/CD</h5>
+
+                    <p class="card-text">Continous Integration and Continous Delivery/Deployment</p>
+                    <a href="/cicd" class="card-link">CI/CD</a>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+
+                    <h5 class="card-title">OOPs Glossary</h5>
+
+                    <p class="card-text">This Page tells you more about the basic OOPs terminology</p>
+                    <a href="/pylint" class="card-link">OOPs Glossary</a>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">AAA Testing</h5>
+
+                    <p class="card-text">This Page talks about testing and why testing is important, and gives a brief
+                                            idea on what AAA testing is.
+                    </p>
+                    <a href="/aaa" class="card-link">AAA Testing</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">OOPs</h5>
+
+                    <p class="card-text">This Page talks more about the four principles of OOPs programming
+                    and to gives examples from the calculator program.
+                    </p>
+                    <a href="/oops" class="card-link">OOPs</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">SOLID</h5>
+
+                    <p class="card-text">This talks more about what SOLID is and how we implemented in the Calculator program</p>
+                    <a href="/solid" class="card-link">SOLID</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <!-- card row 2 end -->
+    <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
+
+
 {% endblock %}
-</article>

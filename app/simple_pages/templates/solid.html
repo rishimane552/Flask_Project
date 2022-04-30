@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block navbaritems %}
+    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Technology Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/git">Git</a>
+            <a class="dropdown-item" href="/docker">Docker</a>
+            <a class="dropdown-item" href="flask">Python/ Flask</a>
+            <a class="dropdown-item" href="cicd">CI/ CD</a>
+            <a class="dropdown-item" href="/pylint">Pylint & General definitions</a>
+            <a class="dropdown-item" href="/aaa">AAA Testing</a>
+            <a class="dropdown-item" href="/oops">OOPs</a>
+            <a class="dropdown-item active" href="/solid">SOLID</a>
+        </div>
+    </ul>
+
+    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
+    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
+    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
+    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
+
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+        <!-- col 1 -->
+
+        <h1 class="font-monospace">SOLID Concepts </h1><br>
+        <div class="col-8">
+            <h4><b><i>What is SOLID? </i></b></h4><br>
+            <p>
+                SOLID is an acronym for the first five object-oriented design (OOD) principles by Robert C. Martin (also
+                known as Uncle Bob).
+            </p>
+            <p>
+                These principles establish practices that lend to developing software with considerations for
+                maintaining and extending as the project grows. Adopting these practices can also contribute to avoiding
+                code smells, refactoring code, and Agile or Adaptive software development.
+            </p>
+
+            <h4><b><i>S - Single-responsiblity Principle</i></b></h4><br>
+            <p>
+                Single-responsibility Principle (SRP) states:
+
+                A class should have one and only one reason to change, meaning that a class should have only one job.
+
+            </p>
+            <p>
+                In our calculator app, in operations file, you can see that we have separate classes
+                for each operation, and it only performs one function, which is the actual operation which shows the
+                single responsibility principle in the calculator
+                app.
+            </p>
+            <pre class="border-top border-bottom" style="height: 200px"><code>class Subtraction:
+    """ This is the subtraction class"""
+
+    @staticmethod
+    def subtract(value_1, value_2):
+        """ This is the add method"""
+        return value_1 - value_2
+
+            </code>
+
+            </pre>
+            <h4><b><i>O - Open-closed Principle</i></b></h4><br>
+            <p>
+                Open-closed Principle (OCP) states:
+
+                Objects or entities should be open for extension but closed for modification.
+
+                This means that a class should be extendable without modifying the class itself.
+                In our program we have different functions and classes in our calculations.py and we cannot make any
+                modifications in them but we can extend them to us the calculations function.
+            </p>
+            <pre class="border-top border-bottom" style="height: 200px"><code>class Subtraction:
+    """ This is the subtraction class"""
+
+    @staticmethod
+    def subtract(value_1, value_2):
+        """ This is the add method"""
+        return value_1 - value_2
+
+
+
+
+            </code>
+
+            </pre>
+
+            <h4><b><i>L - Liskov Substitution Principle</i></b></h4><br>
+            <p>
+                Liskov Substitution Principle states:
+
+                Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects y
+                of type S where S is a subtype of T.
+
+                This means that every subclass or derived class should be substitutable for their base or parent class.
+
+            </p>
+            <p>
+                This means that, given that class B is a subclass of class A, we should be able to pass an object of
+                class B to any method that expects an object of class A and the method should not give any weird output
+                in that case.
+
+                This is the expected behavior, because when we use inheritance we assume that the child class inherits
+                everything that the superclass has. The child class extends the behavior but never narrows it down.
+
+                Therefore, when a class does not obey this principle, it leads to some nasty bugs that are hard to
+                detect.
+            </p>
+
+            <h4><b><i>I - Interface Segregation Principle</i></b></h4><br>
+            <p>
+                Segregation means keeping things separated, and the Interface Segregation Principle is about separating
+                the interfaces.
+
+                The principle states that many client-specific interfaces are better than one general-purpose interface.
+                Clients should not be forced to implement a function they do no need.
+            </p>
+            <p>
+                Suppose if you enter a restaurant and you are pure vegetarian. The waiter in that restaurant gave you
+                the menu card which includes vegetarian items, non-vegetarian items, drinks, and sweets. In this case,
+                as a customer, you should have a menu card which includes only vegetarian items, not everything which
+                you don’t eat in your food. Here the menu should be different for different types of customers. The
+                common or general menu card for everyone can be divided into multiple cards instead of just one. Using
+                this principle helps in reducing the side effects and frequency of required changes.
+            </p>
+
+
+            <h4><b><i>D - Dependency Inversion Principle</i></b></h4><br>
+            <p>
+                Dependency inversion principle states:
+
+                Entities must depend on abstractions, not on concretions. It states that the high-level module must not
+                depend on the low-level module, but they should depend on abstractions.
+
+            </p>
+            <p>
+                if a high module or class will be dependent more on low-level modules or class then your code would have
+                tight coupling and if you will try to make a change in one class it can break another class which is
+                risky at the production level. So always try to make classes loosely coupled as much as you can and you
+                can achieve this through abstraction. The main motive of this principle is decoupling the dependencies
+                so if class A changes the class B doesn’t need to care or know about the changes.
+
+
+
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+
+            <div class="row mb-3">
+                <li><a href="https://github.com/rishimane552">GitHub Repo: Rishikesh Mane</a></li>
+            </div>
+            <!-- row 1 image1 -->
+
+
+
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/s1.png') }}" class="img-fluid" alt="Image 1">
+
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+</div>
+{% endblock %}

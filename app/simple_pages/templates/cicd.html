@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block navbaritems %}
+    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Technology Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/git">Git</a>
+            <a class="dropdown-item" href="/docker">Docker</a>
+            <a class="dropdown-item" href="flask">Python/ Flask</a>
+            <a class="dropdown-item active" href="cicd">CI/ CD</a>
+            <a class="dropdown-item" href="/pylint">Pylint & General definitions</a>
+            <a class="dropdown-item " href="/aaa">AAA Testing</a>
+            <a class="dropdown-item" href="/oops">OOPs</a>
+            <a class="dropdown-item" href="/solid">SOLID</a>
+        </div>
+    </ul>
+
+    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
+    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
+    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
+    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
+
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+        <!-- col 1 -->
+        <h3><b>CI/CD (Continous Integration and Continous Delivery/Deployment)</b></h3>
+        <div class="col-8">
+
+            <h5><b>What is CI/CD?</b></h5>
+            <ul>
+                <li>
+                    <h6><b>Continous Integration</b></h6>
+
+                    <p>Continuous Integration is a software development practice where members of a team integrate their
+                        work
+                        frequently, usually each person integrates at least daily - leading to multiple integrations per
+                        day.
+                        Each integration is verified by an automated build (including test) to detect integration errors
+                        as
+                        quickly as possible. Many teams find that this approach leads to significantly reduced
+                        integration
+                        problems and allows a team to develop cohesive software more rapidly.
+                    </p></li>
+                <li>
+                    <h6><b>Continous Delivery</b></h6>
+                    <p>
+                        Following the automation of builds and unit and integration testing in CI, continuous delivery
+                        automates the release of that validated code to a repository. So, in order to have an effective
+                        continuous delivery process, it’s important that CI is already built into your development
+                        pipeline. The goal of continuous delivery is to have a codebase that is always ready for
+                        deployment to a production environment.
+
+                        In continuous delivery, every stage—from the merger of code changes to the delivery of
+                        production-ready builds—involves test automation and code release automation. At the end of that
+                        process, the operations team is able to deploy an app to production quickly and easily.
+                    </p></li>
+            </ul>
+            <h5>Github Actions</h5>
+
+
+
+
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/cicd1.png') }}" class="img-fluid" alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/cicd2.png') }}" class="img-fluid" alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/cicd3.png') }}" class="img-fluid" alt="Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+
+
+{% endblock %}

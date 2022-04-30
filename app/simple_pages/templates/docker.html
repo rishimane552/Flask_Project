@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block navbaritems %}
+    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Technology Articles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/git">Git</a>
+            <a class="dropdown-item active" href="/docker">Docker</a>
+            <a class="dropdown-item" href="flask">Python/ Flask</a>
+            <a class="dropdown-item" href="cicd">CI/ CD</a>
+            <a class="dropdown-item" href="/pylint">Pylint & General definitions</a>
+            <a class="dropdown-item " href="/aaa">AAA Testing</a>
+            <a class="dropdown-item" href="/oops">OOPs</a>
+            <a class="dropdown-item" href="/solid">SOLID</a>
+        </div>
+    </ul>
+
+    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
+    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
+    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
+    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
+
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+        <!-- col 1 -->
+        <h1>Docker</h1>
+
+        <div class="col-8">
+            <h3>What is Docker?</h3>
+            <p>Docker is an open platform for developing, shipping, and running applications. Docker enables you to
+                separate your applications from your infrastructure so you can deliver software quickly. With Docker,
+                you can manage your infrastructure in the same ways you manage your applications. By taking advantage
+                of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly
+                reduce the delay between writing code and running it in production.
+            </p>
+            <h5>Container</h5>
+            <p>
+                A container is a standard unit of software that packages up code and all its dependencies so the
+                application runs quickly and reliably from one computing environment to another. A Docker container
+                image is a lightweight, standalone, executable package of software that includes everything needed to
+                run an application: code, runtime, system tools, system libraries and settings.
+            <p>
+                Container images become containers at runtime and in the case of Docker containers - images become
+                containers when they run on Docker Engine. Available for both Linux and Windows-based applications,
+                containerized software will always run the same, regardless of the infrastructure. Containers isolate
+                software from its environment and ensure that it works uniformly despite differences for instance
+                between development and staging.
+            </p>
+
+            </p>
+            <h5>Docker Images</h5>
+            </p> A Docker image is a read-only template that contains a set of instructions for creating a container
+            that can run on the Docker platform. It provides a convenient way to ackage up applications and
+            preconfigured server environments, which you can use for your own private use or share publicly with other
+            Docker users. Docker images are also the starting point for anyone using Docker for the first time.
+            </p>
+
+            <h4>Docker Compose</h4>
+            <p>
+                Docker containers are used for running applications in an isolated environment. It’s quite common
+                nowadays to see application deployments done in Docker for the numerous benefits it brings. However,
+                it’s often not as simple as just running a single container. Usually you may have many containers coming
+                together to act as one cohesive service made up of many moving parts.</p>
+
+
+            <p> Managing all of these at deployment time is messy, so to clean it up, Docker provides Docker Compose, a
+                configuration tool used for running multiple containers at once. You can define all of the configuration
+                in one YAML file, and then start all the containers with one command.</p>
+
+            <p> Rather than having all your services in one big container, Docker Compose allows you to split them up
+                into individually manageable containers. This is both better for building and deployment, as you can
+                manage all of them in separate codebases, and don’t need to manually start each individual container.
+            </p>
+
+            <ul><h5>Using Docker Compose is a three step process:</h5>
+                <li>Build the component images using their Dockerfiles, or pull them from a registry.</li>
+                <li>Define all of the component services in a docker-compose.yml file.</li>
+                <li>Run all of them together using the docker-compose CLI.</li>
+            </ul>
+            <h4>Docker Commands</h4>
+            <dl>
+                <dt>
+                    <h7>How to start Docker project</h7>
+                    <p><code>$ docker compose up --build </code></p>
+                </dt>
+                <dd>- This builds your entire container based on your YAML file, and the things you have specified.
+                </dd>
+                <dt>
+                    <h7>How to check logs</h7>
+                    <p><code>$ docker-compose logs -f </code></p>
+                </dt>
+                <dd>- You’ll see the logs from each of the services interleaved into a single stream. This is incredibly
+                    useful when you want to watch for timing-related issues.
+                </dd>
+                <dt>
+                    <h7>Basic Commands</h7>
+                    <p><code>$ docker ps </code></p>
+                </dt>
+                <dd>- This command is used to list the running containers
+                </dd>
+                <dt>
+
+                    <p><code>$ docker stop </code></p>
+                </dt>
+                <dd>- This command stops a running container
+                </dd>
+                <dt>
+                    <p><code>$ docker run </code></p>
+                </dt>
+                <dd>- This command is used to create a container from an image
+                </dd>
+                <dt>
+                    <p><code>$ docker push < username/image name > </code></p>
+                </dt>
+                <dd>- This command is used to push an image to the docker hub repository
+                </dd>
+                <dt>
+                    <p><code>$ docker images </code></p>
+                </dt>
+                <dd>- This command lists all the locally stored docker images
+                </dd>
+                <dt>
+                    <p><code>$ docker rm < container id ></code></p>
+                </dt>
+                <dd>- This command is used to delete an image from local storage
+                </dd>
+                <dt>
+            </dl>
+
+
+        </div>
+        <!-- col 1 end -->
+        <!-- col 2 for images -->
+
+        <div class="col">
+            <!-- row 1 image1 -->
+            <div class="row mb-3"><li><a href="https://hub.docker.com/repository/docker/rrm52/project1" >DockerHub Repo: Rishikesh Mane</a></li>
+                </div>
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/docker1.png') }}" class="img-fluid" alt="Image 1">
+            </div>
+            <!-- row 1 image1 end -->
+            <!-- row 2 image2 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/docker2.png') }}" class="img-fluid" alt="Image 2">
+            </div>
+            <!-- row 2 image2 end -->
+            <!-- row 3 image3 -->
+
+            <div class="row mb-3">
+                <img src="{{ url_for('static', filename='images/docker3.png') }}" class="img-fluid" alt="Image 3">
+            </div>
+            <!-- row 3 image3 end -->
+
+        </div>
+        <!-- col 2 for images end-->
+
+    </div>
+{% endblock %}
