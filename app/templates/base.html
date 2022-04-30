@@ -38,20 +38,20 @@
             {% from 'bootstrap5/utils.html' import render_messages %}
             {% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
 
-            <nav class="navbar navbar-expand-lg navbarcustomcolor">
+            <nav class="navbar navbar-expand-lg navbarcustomcolor nav-pills ">
                 <div class="container">
                     <div class="header-item mt-n1 mb-n1 d-md-flex">
-                        <a class="navbar-brand navbarcustomfontcolor nav-link" href="/">
+                        <a class="navbar-brand nav-link" href="/">
                             <h3><i class="bi bi-house-door-fill"></i>Web Development</h3></a>
                     </div>
 
                     {% if current_user.is_authenticated %}
                         {{ render_nav_item('auth.dashboard','Dashboard' ) }}
                     {% else %}
-                        <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
+                        <ul class="nav dropdown nav-pills ">
                             <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown"
                                role="button"
-                               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               data-bs-toggle="dropdown"  aria-expanded="false">
                                 Articles
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -149,15 +149,15 @@
     }
 
     .navbarcustomcolor {
-        background-color: darkred;
+        background-color: lightcyan;
     }
 
     .navbarcustomfontcolor {
-        color: azure;
+        color: darkred;
     }
 
     .nav-link {
-        color: azure;
+        color: darkred;
     }
 
     .navbar-nav > .active > a {
