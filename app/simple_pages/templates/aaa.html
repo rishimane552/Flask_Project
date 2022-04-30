@@ -1,29 +1,4 @@
 {% extends "base.html" %}
-{% block navbaritems %}
-    <ul class="nav-item dropdown navbarcustomfontcolor ms-auto">
-        <a class="nav-link dropdown-toggle navbarcustomfontcolor" href="#" id="navbarDropdown" role="button"
-           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Technology Articles
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/git">Git</a>
-            <a class="dropdown-item" href="/docker">Docker</a>
-            <a class="dropdown-item" href="flask">Python/ Flask</a>
-            <a class="dropdown-item" href="cicd">CI/ CD</a>
-            <a class="dropdown-item" href="/pylint">Pylint & General definitions</a>
-            <a class="dropdown-item active" href="/aaa">AAA Testing</a>
-            <a class="dropdown-item" href="/oops">OOPs</a>
-            <a class="dropdown-item" href="/solid">SOLID</a>
-        </div>
-    </ul>
-
-    <ul class="nav-item "><a href="/" class="nav-link navbarcustomfontcolor">Home</a></ul>
-    <ul class="nav-item "><a href="/about" class="nav-link navbarcustomfontcolor">About</a></ul>
-    <ul class="nav-item "><a href="/register" class="nav-link navbarcustomfontcolor">Register</a></ul>
-    <ul class="nav-item "><a href="/login" class="nav-link navbarcustomfontcolor">Login</a></ul>
-
-    </div>
-{% endblock %}
 {% block content %}
 
 <div class="row">
@@ -206,4 +181,12 @@
         <!-- col 2 for images end-->
 
     </div>
+    <style>
+        body {
+            font-size: 120%;
+        }
+        .navbar-nav > .active > a {
+            color: black;
+        }
+    </style>
 {% endblock %}
