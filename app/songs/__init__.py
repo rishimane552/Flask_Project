@@ -5,6 +5,7 @@ import os
 from flask import Blueprint, render_template, abort, url_for, current_app
 from flask_login import current_user, login_required
 from jinja2 import TemplateNotFound
+from sqlalchemy import func
 
 from app.db import db
 from app.db.models import Song
@@ -39,12 +40,25 @@ def songs_upload():
         form.file.data.save(filepath)
         # user = current_user
         list_of_songs = []
+        total = 0
         with open(filepath) as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
-                print(row)
-                list_of_songs.append(Song(row['\ufeffID_NUM'], row['AMOUNT'], row['TYPE']))
+                row['AMOUNT'].astype(int)
+                print(type(row['AMOUNT']))
+                total = total + row['AMOUNT']
+                list_of_songs.append(Song(row['\ufeffAMOUNT'], row['TYPE']))
 
+        #average = db.session.query(func.avg(Song.AMOUNT).label('average'))
+        #sum = Song.query.with_entities(func.sum(Song.AMOUNT).label('total')).first().total
+        print(total)
+        #avg = Song.query.execute('SELECT SUM(amount) FROM songs')
+        #total = db.session.execute(sum)
+        #a = avg.first()[0]
+        #t = total.first()[0]
+        #print(a)
+        #print(t)
+        #print(Song.AMOUNT)
         current_user.songs = list_of_songs
         db.session.commit()
 

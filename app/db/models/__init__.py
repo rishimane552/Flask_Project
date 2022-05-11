@@ -9,8 +9,8 @@ from flask_login import UserMixin
 
 class Song(db.Model):
     __tablename__ = 'songs'
-    ID_NUM = db.Column(db.Integer, primary_key=True)
-    AMOUNT = db.Column(db.Integer, nullable=True, unique=False)
+    id = db.Column(db.Integer, primary_key=True)
+    AMOUNT = db.Column(db.String(300), nullable=True, unique=False)
     TYPE = db.Column(db.String(300), nullable=True, unique=False)
     #title = db.Column(db.String(300), nullable=True, unique=False)
     #artist = db.Column(db.String(300), nullable=True, unique=False)
@@ -19,8 +19,7 @@ class Song(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     user = relationship("User", back_populates="songs", uselist=False)
 
-    def __init__(self,ID_NUM, AMOUNT, TYPE):
-        self.ID_NUM = ID_NUM
+    def __init__(self,id, AMOUNT, TYPE):
         self.AMOUNT = AMOUNT
         self.TYPE = TYPE
 
