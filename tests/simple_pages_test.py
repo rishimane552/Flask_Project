@@ -71,13 +71,6 @@ def test_flask_page(client):
     assert b"Python" in response.data
 
 
-def test_cicd_page(client):
-    """This makes the ci/cd page"""
-    response = client.get("/cicd")
-    assert response.status_code == 200
-    assert b"CI/CD" in response.data
-
-
 def test_about_page(client):
     """This makes the ci/cd page"""
     response = client.get("/about")

@@ -1,3 +1,4 @@
+"""This test checks if the environment is printed"""
 import datetime
 from os import getenv
 
