@@ -1,2 +1,3 @@
-Name,Artist,Genre,Year
-abc,xyz,pop,2022
+AMOUNT,TYPE
+500,CREDIT
+-100,DEBIT
