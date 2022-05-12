@@ -36,7 +36,7 @@ def songs_upload():
     form = csv_upload()
     if form.validate_on_submit():
         log = logging.getLogger("csvlog")
-
+        log.info('csv upload done!')
         filename = secure_filename(form.file.data.filename)
         filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
         form.file.data.save(filepath)
@@ -73,6 +73,8 @@ def songs_upload():
 
         current_user.balance = balance
         #print(total)
+        log = logging.getLogger("csvlogs")
+        log.info('User Balance done!')
         db.session.commit()
 
         return redirect(url_for('songs.songs_browse'))
