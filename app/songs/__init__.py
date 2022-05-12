@@ -36,14 +36,19 @@ def songs_upload():
     form = csv_upload()
     if form.validate_on_submit():
         log = logging.getLogger("csvlog")
-
+        log.info('csv upload done!')
         filename = secure_filename(form.file.data.filename)
         filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
         form.file.data.save(filepath)
         # user = current_user
         balance = current_user.balance
         list_of_songs = []
-        balance = 0
+        initial_balance = 0
+        if current_user.balance is None:
+            balance = initial_balance
+        else:
+            balance = current_user.balance
+        log.info(balance)
         with open(filepath) as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
@@ -52,8 +57,8 @@ def songs_upload():
                 transaction = Song(row['\ufeffAMOUNT'], row['TYPE'])
                 #total = total + row['AMOUNT']
                 list_of_songs.append(Song(row['\ufeffAMOUNT'], row['TYPE']))
-                db.session.add(transaction)
-                balance = balance + float(transaction.amount)
+                #db.session.add(transaction)
+                balance = balance + float(row['\ufeffAMOUNT'])
         #average = db.session.query(func.avg(Song.AMOUNT).label('average'))
         #sum = Song.query.with_entities(func.sum(Song.AMOUNT).label('total')).first().total
         #print(total)
@@ -68,6 +73,8 @@ def songs_upload():
 
         current_user.balance = balance
         #print(total)
+        log = logging.getLogger("csvlogs")
+        log.info('User Balance done!')
         db.session.commit()
 
         return redirect(url_for('songs.songs_browse'))

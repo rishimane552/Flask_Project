@@ -1,4 +1,5 @@
 """This test the homepage"""
+from app.db.models import User
 
 def test_request_main_menu_links(client):
     """This makes the index page"""
@@ -36,9 +37,37 @@ def test_user_registration(client):
         assert res.status_code == 200
 
 
-def test_logged_in_user_dashboard_access(client):
+def test_logged_in_user_dashboard_access(client, application):
     """ This ensures logged_in user can access dashboard"""
-    with client:
-        client.post('/login', data=dict(email='test@gmail.com', password='test'), follow_redirects=True)
-        res = client.get('/dashboard')
-        assert res.status_code == 302
+    with application.app_context():
+        email = 'test@test.com'
+        password = 'test1234'
+        response = client.post("/register", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        response = client.post("/login", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        response = client.get("/dashboard")
+        assert response.status_code == 302
+
+
+
+
+def test_denying_dashbaord(client, application):
+    """This test to check while entering wrong username/ Password"""
+    with application.app_context():
+        email = 'test@test.com'
+        password = 'test1234'
+        wrong_email = 'abc@abc.com'
+        wrong_password = 'testtest'
+        user = User.query.filter_by(email=email).first()
+        assert user is None
+        response = client.post("/register", data=dict(email=email, password=password, confirm=password),
+                               follow_redirects=True)
+        user = User.query.filter_by(email=email).first()
+        assert user is None
+        response = client.post("/login", data=dict(email=wrong_email, password=wrong_password, confirm=password),
+                               follow_redirects=True)
+        user = User.query.filter_by(email=wrong_email).first()
+        assert user is None
+        response = client.get("/dashboard")
+        assert response.status_code is not 200
