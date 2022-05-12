@@ -3,6 +3,7 @@
     {% from 'bootstrap5/form.html' import render_form, render_field, render_form_row %}
     <div id="row">
     <h2>Dashboard</h2>
-    <p>Welcome: {{ current_user.email }}</p>
+    <h2>Welcome: {{ current_user.email }}</h2><br>
+    <h2>Current Balance: ${{ balance }}</h2>
     </div>
 {% endblock %}

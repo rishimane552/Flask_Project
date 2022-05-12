@@ -43,7 +43,12 @@ def songs_upload():
         # user = current_user
         balance = current_user.balance
         list_of_songs = []
-        balance = 0
+        initial_balance = 0
+        if current_user.balance is None:
+            balance = initial_balance
+        else:
+            balance = current_user.balance
+        log.info(balance)
         with open(filepath) as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
@@ -52,8 +57,8 @@ def songs_upload():
                 transaction = Song(row['\ufeffAMOUNT'], row['TYPE'])
                 #total = total + row['AMOUNT']
                 list_of_songs.append(Song(row['\ufeffAMOUNT'], row['TYPE']))
-                db.session.add(transaction)
-                balance = balance + float(transaction.amount)
+                #db.session.add(transaction)
+                balance = balance + float(row['\ufeffAMOUNT'])
         #average = db.session.query(func.avg(Song.AMOUNT).label('average'))
         #sum = Song.query.with_entities(func.sum(Song.AMOUNT).label('total')).first().total
         #print(total)
