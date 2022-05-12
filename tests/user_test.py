@@ -36,7 +36,7 @@ def test_adding_user(application):
         db.session.commit()
         song2 = Song.query.filter_by(amount=500).first()
         assert song2.title == 500
-        # checking cascade delete
+
         db.session.delete(user)
         assert db.session.query(User).count() == 0
         assert db.session.query(Song).count() == 0
