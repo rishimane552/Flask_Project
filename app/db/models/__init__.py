@@ -11,7 +11,7 @@ class Song(db.Model):
     __tablename__ = 'songs'
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Float, nullable=True, unique=False)
-    amount = db.Column(db.String(300), nullable=True, unique=False)
+    type = db.Column(db.String(300), nullable=True, unique=False)
     #title = db.Column(db.String(300), nullable=True, unique=False)
     #artist = db.Column(db.String(300), nullable=True, unique=False)
     #year = db.Column(db.String(300), nullable=True, unique=False)
@@ -40,6 +40,7 @@ class User(UserMixin, db.Model):
     active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     is_admin = db.Column('is_admin', db.Boolean(), nullable=False, server_default='0')
     songs = db.relationship("Song", back_populates="user", cascade="all, delete")
+    balance = db.Column(db.Integer, nullable=True)
     #locations = db.relationship("Location", back_populates="user", cascade="all, delete")
 
     # `roles` and `groups` are reserved words that *must* be defined

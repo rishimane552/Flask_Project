@@ -8,7 +8,7 @@ from jinja2 import TemplateNotFound
 from sqlalchemy import func
 
 from app.db import db
-from app.db.models import Song
+from app.db.models import Song, User
 from app.songs.forms import csv_upload
 from werkzeug.utils import secure_filename, redirect
 
@@ -18,12 +18,14 @@ songs = Blueprint('songs', __name__,
 @songs.route('/songs', methods=['GET'], defaults={"page": 1})
 @songs.route('/songs/<int:page>', methods=['GET'])
 def songs_browse(page):
+
     page = page
     per_page = 1000
     pagination = Song.query.paginate(page, per_page, error_out=False)
     data = pagination.items
+    balance = current_user.balance
     try:
-        return render_template('browse_songs.html', data=data, pagination=pagination)
+        return render_template('browse_songs.html', data=data, pagination=pagination, balance=balance)
     except TemplateNotFound:
         abort(404)
 
@@ -39,8 +41,9 @@ def songs_upload():
         filepath = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
         form.file.data.save(filepath)
         # user = current_user
+        balance = current_user.balance
         list_of_songs = []
-        total = 0
+        balance = 0
         with open(filepath) as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
@@ -50,7 +53,7 @@ def songs_upload():
                 #total = total + row['AMOUNT']
                 list_of_songs.append(Song(row['\ufeffAMOUNT'], row['TYPE']))
                 db.session.add(transaction)
-                total = total + float(transaction.amount)
+                balance = balance + float(transaction.amount)
         #average = db.session.query(func.avg(Song.AMOUNT).label('average'))
         #sum = Song.query.with_entities(func.sum(Song.AMOUNT).label('total')).first().total
         #print(total)
@@ -62,8 +65,9 @@ def songs_upload():
         #print(t)
         #print(Song.AMOUNT)
         current_user.songs = list_of_songs
-        current_user.total = total
-        print(total)
+
+        current_user.balance = balance
+        #print(total)
         db.session.commit()
 
         return redirect(url_for('songs.songs_browse'))

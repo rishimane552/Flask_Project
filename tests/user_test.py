@@ -12,13 +12,7 @@ def test_adding_user(application):
         # showing how to add a record
         # create a record
         user = User('test@test.com', 'test1234')
-        # add it to get ready to be committed
         db.session.add(user)
-        # call the commit
-        # db.session.commit()
-        # assert that we now have a new user
-        # assert db.session.query(User).count() == 1
-        # finding one user record by email
         user = User.query.filter_by(email='test@test.com').first()
         log.info(user)
         # asserting that the user retrieved is correct
@@ -29,13 +23,13 @@ def test_adding_user(application):
         db.session.commit()
         assert db.session.query(Song).count() == 2
         song1 = Song.query.filter_by(amount='1000').first()
-        assert song1.amount == '1000'
+        assert song1.amount == 1000
         # changing the title of the song
         song1.title = 500
         # saving the new title of the song
         db.session.commit()
         song2 = Song.query.filter_by(amount='2000').first()
-        assert song2.amount == '2000'
+        assert song2.amount == 2000
 
         db.session.delete(user)
         assert db.session.query(User).count() == 0

@@ -9,7 +9,7 @@
 
                 <a href="{{ url_for("songs.songs_upload") }}" class="btn col-3 mb-5 btn-info" role="button">Upload Songs</a>
 
-        <h1>Total Balance: {{ total }}</h1>
+        <h1>Total Balance: {{ balance }}</h1>
         {{ render_table(data) }}
         {% from 'bootstrap5/pagination.html' import render_pagination %}
 
