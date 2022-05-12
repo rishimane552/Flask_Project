@@ -1,9 +1,6 @@
 """csv file upload test"""
-import os
-from app.songs.forms import csv_upload
 import csv
-from app.db.models import User, Song
-from app import db
+from app.db.models import User
 
 
 def test_csv_upload(client, add_user, application):

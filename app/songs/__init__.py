@@ -44,14 +44,16 @@ def songs_upload():
         with open(filepath) as file:
             csv_file = csv.DictReader(file)
             for row in csv_file:
-                row['AMOUNT'].astype(int)
-                print(type(row['AMOUNT']))
-                total = total + row['AMOUNT']
+                #row['\ufeffAMOUNT'].astype(int)
+                #print(type(row['\ufeffAMOUNT']))
+                transaction = Song(row['\ufeffAMOUNT'], row['TYPE'])
+                #total = total + row['AMOUNT']
                 list_of_songs.append(Song(row['\ufeffAMOUNT'], row['TYPE']))
-
+                db.session.add(transaction)
+                total = total + float(transaction.amount)
         #average = db.session.query(func.avg(Song.AMOUNT).label('average'))
         #sum = Song.query.with_entities(func.sum(Song.AMOUNT).label('total')).first().total
-        print(total)
+        #print(total)
         #avg = Song.query.execute('SELECT SUM(amount) FROM songs')
         #total = db.session.execute(sum)
         #a = avg.first()[0]
@@ -60,6 +62,8 @@ def songs_upload():
         #print(t)
         #print(Song.AMOUNT)
         current_user.songs = list_of_songs
+        current_user.total = total
+        print(total)
         db.session.commit()
 
         return redirect(url_for('songs.songs_browse'))
